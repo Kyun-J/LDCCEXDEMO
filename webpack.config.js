@@ -8,7 +8,9 @@ const config = {
   context: __dirname + "/src",
   entry: {
     index: "./index.js",
-    "component/main": "./component/main.js",
+    main: "./main.js",
+    "component/dialog": "./component/dialog.js",
+    "component/home": "./component/home.js",
   },
   output: {
     path: __dirname + "/dist",
@@ -20,7 +22,8 @@ const config = {
   devServer: {
     contentBase: __dirname + '/dist',
     compress: true,
-    port: 9000
+    port: 9000,
+    historyApiFallback: true
   },
   module: {
     rules: [
