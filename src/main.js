@@ -1,13 +1,14 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from "./store/actions"
 import { makeStyles } from "@material-ui/core/styles";
-import Box from '@material-ui/core/Box';
+
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Drawer from "@material-ui/core/Drawer";
-import Button from "@material-ui/core/Button";
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -33,25 +34,14 @@ const styles = makeStyles((theme) => ({
   },
 }));
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      hidden={value !== index}
-      {...other}
-    >
-      {children}
-    </div>
-  );
-}
-
 export default function MAIN() {
   const classes = styles();
+  
+  const dispatch = useDispatch();
+  const profile = useSelector((store) => store.current.position);
 
   const [state, setState] = React.useState({
     drawer: false,
-    tabPosition: 0,
   });
 
   const setDrawer = (open) => () => {
@@ -59,11 +49,12 @@ export default function MAIN() {
   };
 
   const changeState = (newValue) => () => {
-    setState({ ...state, ["tabPosition"]: newValue, ["drawer"]: false });
+    dispatch(actions.compoenentPosition(newValue));
+    setState({ ...state, ["drawer"]: false });
   };
 
   return (
-    <Box>
+    <div>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -76,9 +67,8 @@ export default function MAIN() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            News
+            HYBRID DEMO
           </Typography>
-          <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
       <React.Fragment key="left">
@@ -89,21 +79,21 @@ export default function MAIN() {
         >
           <div role="presentation" className={classes.list}></div>
           <List>
-            {['Home', 'Dialogs'].map((text, index) => (
+            {['Home', 'Dialogs', 'Network', 'Camera', 'Gallery', 'Auth', 'Location'].map((text, index) => (
             <ListItem button key={text} onClick={changeState(index)}>
                 <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                 <ListItemText primary={text} />
             </ListItem>
             ))}
-        </List>
+          </List>
         </Drawer>
       </React.Fragment>
-      <TabPanel value={state["tabPosition"]} index={0}>
+      <div hidden={profile !== 0}>
         <Home />
-      </TabPanel>
-      <TabPanel value={state["tabPosition"]} index={1}>
+      </div>
+      <div hidden={profile !== 1}>
         <Dialog />
-      </TabPanel>
-    </Box>
+      </div>
+    </div>
   );
 }

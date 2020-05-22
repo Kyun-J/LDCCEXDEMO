@@ -8,16 +8,17 @@ const config = {
   context: __dirname + "/src",
   entry: {
     index: "./index.js",
-    main: "./main.js",
     "component/dialog": "./component/dialog.js",
     "component/home": "./component/home.js",
+    "store/actions": "./store/actions",
+    "store/reducers": "./store/reducers"
   },
   output: {
     path: __dirname + "/dist",
     filename: "[name].js",
   },
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".js"],
   },
   devServer: {
     contentBase: __dirname + '/dist',

@@ -1,53 +1,38 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import * as actions from "../store/actions"
+import { useDispatch } from "react-redux";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
-    minWidth: 275,
+    textAlign: "center",
+    padding: 10
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
+  btn: {
+    width: "90%",
+    margin: 10,
   },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-});
+}));
 
-export default function SimpleCard() {
+const btnColor = ["default", "primary", "secondary"];
+
+export default function RecipeReviewCard() {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
-
+  const dispatch = useDispatch();
   return (
-    <Card className={classes.root}>
-      <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Word of the Day
-        </Typography>
-        <Typography variant="h5" component="h2">
-          be{bull}nev{bull}o{bull}lent
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          adjective
-        </Typography>
-        <Typography variant="body2" component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
+    <div className={classes.root}>
+      {['Dialogs', 'Network', 'Camera', 'Gallery', 'Auth', 'Location'].map((info, i) => (
+        <Button
+          variant="contained"
+          color={btnColor[i % 3]}
+          size="large"
+          onMouseUp={() => {dispatch(actions.compoenentPosition(i + 1));}}
+          className={classes.btn}
+        >
+          {info}
+        </Button>
+      ))}
+    </div>
   );
 }
