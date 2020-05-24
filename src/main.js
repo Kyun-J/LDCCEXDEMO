@@ -3,11 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import * as actions from "./store/actions"
 import { makeStyles } from "@material-ui/core/styles";
 
+import Box from "@material-ui/core/Box"
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import HomeIcon from "@material-ui/icons/Home";
 import Drawer from "@material-ui/core/Drawer";
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -16,8 +18,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
-import Home from "./component/home";
-import Dialog from "./component/dialog";
+import { Home, Dialog } from "./component";
 
 const styles = makeStyles((theme) => ({
   menuButton: {
@@ -33,6 +34,8 @@ const styles = makeStyles((theme) => ({
     borderRight: `1px solid ${theme.palette.divider}`,
   },
 }));
+
+const menus = ['Home', 'Dialogs', 'Network', 'Camera', 'Gallery', 'Auth', 'Location'];
 
 export default function MAIN() {
   const classes = styles();
@@ -54,7 +57,7 @@ export default function MAIN() {
   };
 
   return (
-    <div>
+    <Box>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -67,8 +70,11 @@ export default function MAIN() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            HYBRID DEMO
+            { profile===0?'HYBRID DEMO':menus[profile]+' Demo' }
           </Typography>
+          <IconButton color="inherit" onClick={() => {setTimeout(() => {dispatch(actions.compoenentPosition(0));}, 300);}}>
+            <HomeIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <React.Fragment key="left">
@@ -79,7 +85,7 @@ export default function MAIN() {
         >
           <div role="presentation" className={classes.list}></div>
           <List>
-            {['Home', 'Dialogs', 'Network', 'Camera', 'Gallery', 'Auth', 'Location'].map((text, index) => (
+            {menus.map((text, index) => (
             <ListItem button key={text} onClick={changeState(index)}>
                 <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                 <ListItemText primary={text} />
@@ -88,12 +94,8 @@ export default function MAIN() {
           </List>
         </Drawer>
       </React.Fragment>
-      <div hidden={profile !== 0}>
-        <Home />
-      </div>
-      <div hidden={profile !== 1}>
-        <Dialog />
-      </div>
-    </div>
+      <Home />
+      <Dialog />
+    </Box>
   );
 }

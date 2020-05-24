@@ -8,8 +8,7 @@ const config = {
   context: __dirname + "/src",
   entry: {
     index: "./index.js",
-    "component/dialog": "./component/dialog.js",
-    "component/home": "./component/home.js",
+    "component": "./component/",
     "store/actions": "./store/actions",
     "store/reducers": "./store/reducers"
   },

@@ -1,6 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import { useSelector } from "react-redux";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,10 +23,13 @@ const btnInfo = [
 
 export default function RecipeReviewCard() {
   const classes = useStyles();
+  const profile = useSelector((store) => store.current.position);
+
   return (
-    <div className={classes.root}>
+    <div hidden={profile!=1} className={classes.root}>
       {btnInfo.map((info, i) => (
         <Button
+          key={i}
           variant="contained"
           color={btnColor[i % 3]}
           onClick={() => {
