@@ -16,31 +16,10 @@ const useStyles = makeStyles((theme) => ({
 
 const btnColor = ["default", "primary", "secondary"];
 const btnInfo = [
-  {
-    name: "Short Toast (Android Only)",
-    fun: "ShortToast",
-    args: ["짦은 토스트 메시지"],
-  },
-  {
-    name: "Long Toast (Android Only)",
-    fun: "LongToast",
-    args: ["긴 토스트 메시지"],
-  },
-  {
-    name: "Show Dialog",
-    fun: "Dialog",
-    args: [
-      "testTitle",
-      "testMessage",
-      [
-        ["확인", "basic"],
-        ["취소", "cancel"],
-        ["삭제", "destructive"],
-      ],
-      "alert",
-      true,
-    ],
-  },
+  { name: "Open Camera", fun: "Camera", args: [100, 100] },
+  { name: "QRCode Scan", fun: "QRCodeScan", args: [] },
+  { name: "Gallery Select(Single)", fun: "SinglePhoto", args: [100, 100] },
+  { name: "Gallery Select(Multi)", fun: "MultiplePhotos", args: [100, 100] },
 ];
 
 export default function RecipeReviewCard() {
