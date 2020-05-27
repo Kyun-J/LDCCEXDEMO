@@ -10,7 +10,6 @@ import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { red, deepOrange } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   expand: {
@@ -28,11 +27,11 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: 0
   },
   card: {
-    backgroundColor: deepOrange[500],
+    backgroundColor: theme.palette.primary.main,
     borderRadius: 0
   },
   avatar: {
-    backgroundColor: red[400],
+    backgroundColor: theme.palette.secondary.main,
   },
   action: {
     padding: 0,

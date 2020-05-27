@@ -2,9 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "./store/actions";
 import { makeStyles } from "@material-ui/core/styles";
-import { deepOrange } from "@material-ui/core/colors";
 import { GlobalThemeProvider } from "./theme";
-
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -36,9 +34,6 @@ import {
 import Left from "./left";
 
 const styles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: deepOrange["600"]
-  },
   menuButton: {
     marginRight: theme.spacing(2),
   },
@@ -113,7 +108,7 @@ export default function MAIN() {
 
   return (
     <GlobalThemeProvider>
-      <AppBar position="static" className={classes.root}>
+      <AppBar position="static" color="primary">
         <Toolbar>
           <IconButton
             edge="start"

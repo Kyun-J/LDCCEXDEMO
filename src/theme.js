@@ -1,6 +1,6 @@
 import React from "react";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { deepOrange, red } from "@material-ui/core/colors";
+import { deepOrange } from "@material-ui/core/colors";
 
 const GlobalTheme = createMuiTheme({
   palette: {
@@ -10,12 +10,17 @@ const GlobalTheme = createMuiTheme({
     },
   },
   overrides: {
-      MuiButton: {
-          contained: {
-              backgroundColor: "#fafafa"
+    MuiButton: {
+      contained: {
+        backgroundColor: "#fafafa",
+        '&:hover': {
+          '@media (hover: none)': {
+            backgroundColor: "#fafafa",
           }
-      }
-  }
+        },
+      },
+    },
+  },
 });
 
 export const GlobalThemeProvider = ({ children }) => (

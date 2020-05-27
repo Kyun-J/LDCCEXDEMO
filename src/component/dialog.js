@@ -1,16 +1,32 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import Card from "@material-ui/core/Card";
+import TextField from "@material-ui/core/TextField";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     textAlign: "center",
     padding: 10,
   },
   btn: {
-    width: "90%",
+    width: "60%",
     margin: 10,
-    textTransform: 'none'
+    textTransform: "none",
+  },
+  card: {
+    width: "90%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: 10,
+    marginBottom: 10,
+    padding: 10,
+    backgroundColor: "#f5fafa",
+  },
+  field: {
+    margin: 10,
+    width: "40%",
+    minWidth: 200
   },
 }));
 
@@ -19,12 +35,10 @@ const btnInfo = [
   {
     name: "Short Toast (Android Only)",
     fun: "ShortToast",
-    args: ["짦은 토스트 메시지"],
   },
   {
     name: "Long Toast (Android Only)",
     fun: "LongToast",
-    args: ["긴 토스트 메시지"],
   },
   {
     name: "Show Dialog",
@@ -45,21 +59,88 @@ const btnInfo = [
 
 export default function RecipeReviewCard() {
   const classes = useStyles();
+
+  const ContButtons = function (props) {
+    const { position, args } = props;
+    return (
+      <Button
+        variant="contained"
+        color={btnColor[position % 3]}
+        onClick={() => {
+          console.log(args)
+          // $flex[btnInfo[position].fun].apply(this, args);
+        }}
+        className={classes.btn}
+      >
+        {btnInfo[position].name}
+      </Button>
+    );
+  };
+
+  const ContTexts = function (props) {
+    const { position, ...others } = props;
+    return (
+      <TextField
+        variant="outlined"
+        size="small"
+        className={classes.field}
+        {...others}
+      />
+    );
+  };
+
+  const Contents = (props) => {
+    const position = props.position;
+    const [args, setData] = React.useState([]);
+    const setArgs = (index, data) => {
+      args[index] = data;
+      setData(args);
+    };
+    switch (position) {
+      case 0:
+        return (
+          <Card className={classes.card}>
+            <ContTexts
+              label="Toast Message"
+              defaultValue="Toast Message"
+              onLoad={() => {
+                setArgs(0, "Toast Message");
+              }}
+              onChange={(event) => {
+                setArgs(0, event.target.value);
+              }}
+            />
+            <ContButtons position={position} args={args} />
+          </Card>
+        );
+      case 1:
+        return (
+          <Card className={classes.card}>
+            <ContTexts
+              label="Toast Message"
+              defaultValue="Toast Message"
+              onChange={(event) => {
+                setArgs(0, event.target.value);
+              }}
+            />
+            <ContButtons position={position} args={args} />
+          </Card>
+        );
+      case 2:
+        return (
+          <Card className={classes.card}>
+            <ContButtons position={position} />
+          </Card>
+        );
+      default:
+        return <div />;
+    }
+  };
+
   return (
     <div className={classes.root}>
-      {btnInfo.map((info, i) => (
-        <Button
-          key={i}
-          variant="contained"
-          color={btnColor[i % 3]}
-          onClick={() => {
-            $flex[info.fun].apply(null, info.args);
-          }}
-          size="large"
-          className={classes.btn}
-        >
-          {info.name}
-        </Button>
+      {btnInfo.map((_, i) => (
+        <Contents position={i} key={i} />
       ))}
     </div>
   );
