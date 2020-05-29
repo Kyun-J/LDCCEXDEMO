@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"; 
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "./store/actions";
 import { makeStyles } from "@material-ui/core/styles";
@@ -108,7 +108,7 @@ export default function MAIN() {
 
   return (
     <GlobalThemeProvider>
-      <AppBar position="static" color="primary">
+      <AppBar position="sticky" color="primary">
         <Toolbar>
           <IconButton
             edge="start"

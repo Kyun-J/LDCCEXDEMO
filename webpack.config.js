@@ -1,16 +1,13 @@
 const webpack = require("webpack");
 const ejs = require("ejs");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const config = {
   mode: process.env.NODE_ENV,
   context: __dirname + "/src",
   entry: {
-    index: "./index.js",
-    "component": "./component/",
-    "store/actions": "./store/actions",
-    "store/reducers": "./store/reducers"
+    index: "./index.js"
   },
   output: {
     path: __dirname + "/dist",
@@ -20,10 +17,10 @@ const config = {
     extensions: [".js"],
   },
   devServer: {
-    contentBase: __dirname + '/dist',
+    contentBase: __dirname + "/dist",
     compress: true,
     port: 9000,
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -32,48 +29,12 @@ const config = {
         loader: "babel-loader",
         exclude: /node_modules/,
       },
-      {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
-      },
-      {
-        test: /\.(png|jpg|gif|ico)$/,
-        loader: "file-loader",
-        options: {
-          name: "[name].[ext]?emitFile=false",
-        },
-      },
-      {
-        test: /\.s(c|a)ss$/,
-        use: [
-          "css-loader",
-          {
-            loader: "sass-loader",
-            // Requires sass-loader@^7.0.0
-            options: {
-              implementation: require("sass"),
-              fiber: require("fibers"),
-              indentedSyntax: true, // optional
-            },
-            // Requires sass-loader@^8.0.0
-            options: {
-              implementation: require("sass"),
-              sassOptions: {
-                fiber: require("fibers"),
-                indentedSyntax: true, // optional
-              },
-            },
-          },
-        ],
-      },
     ],
   },
   plugins: [
+    new BundleAnalyzerPlugin(),
     new webpack.DefinePlugin({
       global: "window",
-    }),
-    new MiniCssExtractPlugin({
-      filename: "[name].css",
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -81,6 +42,11 @@ const config = {
       ],
     }),
   ],
+optimization: {
+  splitChunks: {
+      chunks: 'all',
+    },
+  },
 };
 
 if (config.mode === "production") {

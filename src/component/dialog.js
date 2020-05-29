@@ -1,37 +1,11 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import TextField from "@material-ui/core/TextField";
+import { Root, ContButton, ContText, ContCard } from "./elements";
 
-const useStyles = makeStyles(() => ({
-  root: {
-    textAlign: "center",
-    padding: 10,
-  },
-  btn: {
-    width: "60%",
-    margin: 10,
-    textTransform: "none",
-  },
-  card: {
-    width: "90%",
-    marginLeft: "auto",
-    marginRight: "auto",
-    marginTop: 10,
-    marginBottom: 10,
-    padding: 10,
-    backgroundColor: "#f5fafa",
-  },
-  field: {
-    margin: 10,
-    width: "40%",
-    minWidth: 200
-  },
-}));
-
-const btnColor = ["default", "primary", "secondary"];
-const btnInfo = [
+const infos = [
+  {
+    name: "Show Dialog",
+    fun: "Dialog",
+  },  
   {
     name: "Short Toast (Android Only)",
     fun: "ShortToast",
@@ -40,57 +14,12 @@ const btnInfo = [
     name: "Long Toast (Android Only)",
     fun: "LongToast",
   },
-  {
-    name: "Show Dialog",
-    fun: "Dialog",
-    args: [
-      "testTitle",
-      "testMessage",
-      [
-        ["확인", "basic"],
-        ["취소", "cancel"],
-        ["삭제", "destructive"],
-      ],
-      "alert",
-      true,
-    ],
-  },
 ];
 
 export default function RecipeReviewCard() {
-  const classes = useStyles();
-
-  const ContButtons = function (props) {
-    const { position, args } = props;
-    return (
-      <Button
-        variant="contained"
-        color={btnColor[position % 3]}
-        onClick={() => {
-          console.log(args)
-          // $flex[btnInfo[position].fun].apply(this, args);
-        }}
-        className={classes.btn}
-      >
-        {btnInfo[position].name}
-      </Button>
-    );
-  };
-
-  const ContTexts = function (props) {
-    const { position, ...others } = props;
-    return (
-      <TextField
-        variant="outlined"
-        size="small"
-        className={classes.field}
-        {...others}
-      />
-    );
-  };
-
   const Contents = (props) => {
     const position = props.position;
+    const info = infos[position];
     const [args, setData] = React.useState([]);
     const setArgs = (index, data) => {
       args[index] = data;
@@ -98,11 +27,47 @@ export default function RecipeReviewCard() {
     };
     switch (position) {
       case 0:
+        React.useEffect(() => {
+          setArgs(0, "Title Text");
+          setArgs(1, "Body Text");
+          setArgs(2, [
+            ["확인", "basic"],
+            ["취소", "cancel"],
+            ["삭제", "destructive"],
+          ]);
+          setArgs(3, "alert");
+          setArgs(4, true);
+        });
         return (
-          <Card className={classes.card}>
-            <ContTexts
+          <ContCard title="Dioalog Test">
+            <ContText
+              label="Title Text"
+              onChange={(event) => {
+                setArgs(0, event.target.value);
+              }}
+            />
+            <ContText
+              label="Body Text"
+              onChange={(event) => {
+                setArgs(1, event.target.value);
+              }}
+            />
+            <ContButton
+              funName={info.fun}
+              text={info.name}
+              position={position}
+              args={args}
+            />
+          </ContCard>
+        );
+      case 1:
+        React.useEffect(() => {
+          setArgs(0, "Toast Message");
+        });
+        return (
+          <ContCard title="Short Toast Test">
+            <ContText
               label="Toast Message"
-              defaultValue="Toast Message"
               onLoad={() => {
                 setArgs(0, "Toast Message");
               }}
@@ -110,38 +75,43 @@ export default function RecipeReviewCard() {
                 setArgs(0, event.target.value);
               }}
             />
-            <ContButtons position={position} args={args} />
-          </Card>
+            <ContButton
+              funName={info.fun}
+              text={info.name}
+              position={position}
+              args={args}
+            />
+          </ContCard>
         );
-      case 1:
+      case 2:
+        React.useEffect(() => {
+          setArgs(0, "Toast Message");
+        });
         return (
-          <Card className={classes.card}>
-            <ContTexts
+          <ContCard title="Long Toast Test">
+            <ContText
               label="Toast Message"
-              defaultValue="Toast Message"
               onChange={(event) => {
                 setArgs(0, event.target.value);
               }}
             />
-            <ContButtons position={position} args={args} />
-          </Card>
-        );
-      case 2:
-        return (
-          <Card className={classes.card}>
-            <ContButtons position={position} />
-          </Card>
+            <ContButton
+              funName={info.fun}
+              text={info.name}
+              position={position}
+              args={args}
+            />
+          </ContCard>
         );
       default:
         return <div />;
     }
   };
-
   return (
-    <div className={classes.root}>
-      {btnInfo.map((_, i) => (
+    <Root>
+      {infos.map((_, i) => (
         <Contents position={i} key={i} />
       ))}
-    </div>
+    </Root>
   );
 }
