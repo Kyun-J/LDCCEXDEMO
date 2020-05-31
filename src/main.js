@@ -1,4 +1,4 @@
-import React from "react"; 
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "./store/actions";
 import { makeStyles } from "@material-ui/core/styles";
@@ -22,15 +22,38 @@ import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import FolderIcon from "@material-ui/icons/Folder";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 
-import {
-  Home,
-  Dialog,
-  Network,
-  Photo,
-  Auth,
-  Repository,
-  Etc,
-} from "./component";
+import splitLoad from './splitLoad'
+
+const Home = splitLoad(() => import('./component/home'));
+const Dialog = splitLoad(() => import('./component/Dialog'));
+const Network = splitLoad(() => import('./component/Network'));
+const Photo = splitLoad(() => import('./component/Photo'));
+const Auth = splitLoad(() => import('./component/Auth'));
+const Repository = splitLoad(() => import('./component/Repository'));
+const Etc = splitLoad(() => import('./component/Etc'));
+
+function Contents(props) {
+  const position = props.position;
+  switch (position) {
+    case 0:
+      return <Home />;
+    case 1:
+      return <Dialog />;
+    case 2:
+      return <Network />;
+    case 3:
+      return <Photo />;
+    case 4:
+      return <Auth />;
+    case 5:
+      return <Repository />;
+    case 6:
+      return <Etc />;
+    default:
+      return <div />;
+  }
+}
+
 import Left from "./left";
 
 const styles = makeStyles((theme) => ({
@@ -65,33 +88,11 @@ const Icons = [
   <MoreHorizIcon />,
 ];
 
-function Contents(props) {
-  const position = props.position;
-  switch (position) {
-    case 0:
-      return <Home />;
-    case 1:
-      return <Dialog />;
-    case 2:
-      return <Network />;
-    case 3:
-      return <Photo />;
-    case 4:
-      return <Auth />;
-    case 5:
-      return <Repository />;
-    case 6:
-      return <Etc />;
-    default:
-      return <div />;
-  }
-}
-
 export default function MAIN() {
   const classes = styles();
 
   const dispatch = useDispatch();
-  const profile = useSelector((store) => store.current.position);
+  const position = useSelector((store) => store.current.position);
 
   const [state, setState] = React.useState({
     drawer: false,
@@ -120,7 +121,7 @@ export default function MAIN() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            {profile === 0 ? "Hybrid Demo" : menus[profile] + " Demo"}
+            {position === 0 ? "Hybrid Demo" : menus[position] + " Demo"}
           </Typography>
           <IconButton
             color="inherit"
@@ -152,7 +153,7 @@ export default function MAIN() {
           ))}
         </List>
       </Drawer>
-      <Contents position={profile} />
+      <Contents position={position} />
     </GlobalThemeProvider>
   );
 }

@@ -3,6 +3,8 @@ const ejs = require("ejs");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
+const version = "1"
+
 const config = {
   mode: process.env.NODE_ENV,
   context: __dirname + "/src",
@@ -11,7 +13,8 @@ const config = {
   },
   output: {
     path: __dirname + "/dist",
-    filename: "[name].js",
+    filename: `[name].js`,
+    chunkFilename: `[name].js`
   },
   resolve: {
     extensions: [".js"],
@@ -32,7 +35,7 @@ const config = {
     ],
   },
   plugins: [
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
     new webpack.DefinePlugin({
       global: "window",
     }),
@@ -42,11 +45,6 @@ const config = {
       ],
     }),
   ],
-optimization: {
-  splitChunks: {
-      chunks: 'all',
-    },
-  },
 };
 
 if (config.mode === "production") {
