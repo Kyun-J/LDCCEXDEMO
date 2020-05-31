@@ -8,7 +8,7 @@ const withSplitting = getComponent => {
 
     constructor(props) {
       super(props);
-      getComponent().then(({ default: Module }) => {
+      getComponent.then(({ default: Module }) => {
         this.setState({
           Module
         });

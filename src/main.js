@@ -24,13 +24,13 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 
 import splitLoad from './splitLoad'
 
-const Home = splitLoad(() => import('./component/home'));
-const Dialog = splitLoad(() => import('./component/Dialog'));
-const Network = splitLoad(() => import('./component/Network'));
-const Photo = splitLoad(() => import('./component/Photo'));
-const Auth = splitLoad(() => import('./component/Auth'));
-const Repository = splitLoad(() => import('./component/Repository'));
-const Etc = splitLoad(() => import('./component/Etc'));
+const Home = splitLoad(import('./component/home'));
+const Dialog = splitLoad(import('./component/Dialog'));
+const Network = splitLoad(import('./component/Network'));
+const Photo = splitLoad(import('./component/Photo'));
+const Auth = splitLoad(import('./component/Auth'));
+const Repository = splitLoad(import('./component/Repository'));
+const Etc = splitLoad(import('./component/Etc'));
 
 function Contents(props) {
   const position = props.position;

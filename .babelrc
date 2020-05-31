@@ -5,7 +5,7 @@
       "useBuiltIns": "usage",
       "corejs": 3,
       "targets": {
-        "browsers": ["and_chr >= 30", "iOS >= 11"]
+        "browsers": ["and_chr >= 49", "iOS >= 11"]
       }
     }],
     "@babel/preset-react"
