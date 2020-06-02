@@ -37,7 +37,7 @@ export default function RecipeReviewCard() {
           setArgs(2, {
             "basic": "확인",
             "destructive": "삭제",
-            "cancel": 취소
+            "cancel": "취소"
           });
           setArgs(3, true);
           setArgs(4, true);
@@ -71,7 +71,7 @@ export default function RecipeReviewCard() {
           setArgs(2, {
             "basic": "확인",
             "destructive": "삭제",
-            "cancel": 취소
+            "cancel": "취소"
           });
           setArgs(3, false);
           setArgs(4, true);
