@@ -73,7 +73,6 @@ export const ContButton = function (props) {
       variant="contained"
       color="primary"
       onClick={async () => {
-        console.log(args)
         const result = await $flex[funName].apply(this, args);
         if(dialog) {
           let body = '';

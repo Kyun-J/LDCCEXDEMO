@@ -34,7 +34,7 @@ export default function RecipeReviewCard() {
         React.useEffect(() => {
           setArgs(0, 0);
           setArgs(1, "Data Key");
-          setArgs(1, "Data Value");
+          setArgs(2, "Data Value");
         });
         return (
           <ContCard title="Local Data Set Test">
