@@ -33,7 +33,6 @@ export default function RecipeReviewCard() {
               text={info.name}
               position={position}
               dialog={true}
-              args={args}
             />
           </ContCard>
         );
@@ -45,7 +44,6 @@ export default function RecipeReviewCard() {
               text={info.name}
               position={position}
               dialog={true}
-              args={args}
             />
           </ContCard>
         );
@@ -57,7 +55,6 @@ export default function RecipeReviewCard() {
               text={info.name}
               position={position}
               dialog={true}
-              args={args}
             />
           </ContCard>
         );
@@ -69,7 +66,6 @@ export default function RecipeReviewCard() {
               text={info.name}
               position={position}
               dialog={true}
-              args={args}
             />
           </ContCard>
         );
