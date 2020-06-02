@@ -59,7 +59,7 @@ export const ContButton = function (props) {
           } else {
             body = String(result);
           }
-          $flex.Dialog(text, body, [['확인','basic']], 'alert', true);
+          $flex.Dialog(text, body, [['확인','basic']], true, true);
         }
       }}
       className={classes.btn}
