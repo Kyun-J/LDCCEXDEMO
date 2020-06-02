@@ -10,7 +10,7 @@ import { Provider } from "react-redux";
 
 import splitLoad from './splitLoad'
 
-const MAIN = splitLoad(import('./main'))
+const MAIN = splitLoad(import(/* webpackChunkName: "main" */ './main'))
 
 const store = createStore(reducers);
 

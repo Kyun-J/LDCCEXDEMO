@@ -42,15 +42,25 @@ const useStyles = makeStyles(() => ({
 
 export const ContButton = function (props) {
   const classes = useStyles();
-  const { funName, text, position, args, ...others } = props;
+  const { funName, text, position, args, dialog, ...others } = props;
 
   return (
     <Button
       variant="contained"
       color="primary"
-      onClick={() => {
-          console.log(args)
-        // $flex[funName].apply(this, args);
+      onClick={async () => {
+        const result = await $flex[funName].apply(this, args);
+        if(dialog) {
+          let body = '';
+          if(typeof result === 'object') {
+            Object.keys(result).forEach(k => {
+              body.concat(k).concat(' : ').concat(result[k]).concat('/n');
+            });
+          } else {
+            body = String(result);
+          }
+          $flex.Dialog(text, body, [['확인','basic']], 'alert', true);
+        }
       }}
       className={classes.btn}
       {...others}

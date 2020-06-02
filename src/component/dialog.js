@@ -5,14 +5,18 @@ const infos = [
   {
     name: "Show Dialog",
     fun: "Dialog",
-  },  
-  {
-    name: "Short Toast (Android Only)",
-    fun: "ShortToast",
   },
   {
-    name: "Long Toast (Android Only)",
-    fun: "LongToast",
+    name: "Show Bottom Dialog",
+    fun: "Dialog",
+  },  
+  {
+    name: "Short Toast",
+    fun: "Toast",
+  },
+  {
+    name: "Long Toast",
+    fun: "Toast",
   },
 ];
 
@@ -35,7 +39,7 @@ export default function RecipeReviewCard() {
             ["취소", "cancel"],
             ["삭제", "destructive"],
           ]);
-          setArgs(3, "alert");
+          setArgs(3, true);
           setArgs(4, true);
         });
         return (
@@ -62,17 +66,28 @@ export default function RecipeReviewCard() {
         );
       case 1:
         React.useEffect(() => {
-          setArgs(0, "Toast Message");
+          setArgs(0, "Title Text");
+          setArgs(1, "Body Text");
+          setArgs(2, [
+            ["확인", "basic"],
+            ["취소", "cancel"],
+            ["삭제", "destructive"],
+          ]);
+          setArgs(3, false);
+          setArgs(4, true);
         });
         return (
-          <ContCard title="Short Toast Test">
+          <ContCard title="Bottom Dioalog Test">
             <ContText
-              label="Toast Message"
-              onLoad={() => {
-                setArgs(0, "Toast Message");
-              }}
+              label="Title Text"
               onChange={(event) => {
                 setArgs(0, event.target.value);
+              }}
+            />
+            <ContText
+              label="Body Text"
+              onChange={(event) => {
+                setArgs(1, event.target.value);
               }}
             />
             <ContButton
@@ -85,12 +100,34 @@ export default function RecipeReviewCard() {
         );
       case 2:
         React.useEffect(() => {
-          setArgs(0, "Toast Message");
+          setArgs(0, "Short Toast Message");
+          setArgs(1, true);
+        });
+        return (
+          <ContCard title="Short Toast Test">
+            <ContText
+              label="Short Toast Message"
+              onChange={(event) => {
+                setArgs(0, event.target.value);
+              }}
+            />
+            <ContButton
+              funName={info.fun}
+              text={info.name}
+              position={position}
+              args={args}
+            />
+          </ContCard>
+        );
+      case 3:
+        React.useEffect(() => {
+          setArgs(0, "Long Toast Message");
+          setArgs(1, false);
         });
         return (
           <ContCard title="Long Toast Test">
             <ContText
-              label="Toast Message"
+              label="Long Toast Message"
               onChange={(event) => {
                 setArgs(0, event.target.value);
               }}

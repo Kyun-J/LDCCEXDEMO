@@ -3,8 +3,6 @@ const ejs = require("ejs");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-const version = "1"
-
 const config = {
   mode: process.env.NODE_ENV,
   context: __dirname + "/src",

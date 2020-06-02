@@ -1,44 +1,60 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import { Root, ContButton, ContText, ContCard } from "./elements";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    textAlign: "center",
-    padding: 10,
+const infos = [
+  {
+    name: "Network",
+    fun: "Network",
   },
-  btn: {
-    width: "90%",
-    margin: 10,
-    textTransform: 'none'
-  },
-}));
-
-const btnColor = ["default", "primary", "secondary"];
-const btnInfo = [
-  { name: "Check Network Status", fun: "Network", args: [] },
-  { name: "Get Network Info", fun: "NetworkStatus", args: [] },
-  { name: "Get GPS Location", fun: "Location", args: [] },
+  {
+    name: "Location",
+    fun: "Location",
+  },  
 ];
 
 export default function RecipeReviewCard() {
-  const classes = useStyles();
+  const Contents = (props) => {
+    const position = props.position;
+    const info = infos[position];
+    const [args, setData] = React.useState([]);
+    const setArgs = (index, data) => {
+      args[index] = data;
+      setData(args);
+    };
+    switch (position) {
+      case 0:
+        return (
+          <ContCard title="Network Test">
+            <ContButton
+              funName={info.fun}
+              text={info.name}
+              position={position}
+              dialog={true}
+              args={args}
+            />
+          </ContCard>
+        );
+      case 1:
+        return (
+          <ContCard title="Location Test">
+            <ContButton
+              funName={info.fun}
+              text={info.name}
+              position={position}
+              dialog={true}
+              args={args}
+            />
+          </ContCard>
+        );
+      default:
+        return <div />;
+    }
+  };
   return (
-    <div className={classes.root}>
-      {btnInfo.map((info, i) => (
-        <Button
-          key={i}
-          variant="contained"
-          color={btnColor[i % 3]}
-          onClick={() => {
-            $flex[info.fun].apply(null, info.args);
-          }}
-          size="large"
-          className={classes.btn}
-        >
-          {info.name}
-        </Button>
+    <Root>
+      {infos.map((_, i) => (
+        <Contents position={i} key={i} />
       ))}
-    </div>
+    </Root>
   );
 }
