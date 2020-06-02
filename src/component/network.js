@@ -1,5 +1,5 @@
 import React from "react";
-import { Root, ContButton, ContText, ContCard } from "./elements";
+import { Root, ContButton, ContCard } from "./elements";
 
 const infos = [
   {
@@ -16,11 +16,6 @@ export default function RecipeReviewCard() {
   const Contents = (props) => {
     const position = props.position;
     const info = infos[position];
-    const [args, setData] = React.useState([]);
-    const setArgs = (index, data) => {
-      args[index] = data;
-      setData(args);
-    };
     switch (position) {
       case 0:
         return (

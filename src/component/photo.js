@@ -1,5 +1,5 @@
 import React from "react";
-import { Root, ContButton, ContText, ContCard } from "./elements";
+import { Root, ContButton, ContText, ContImg, ContCard } from "./elements";
 
 const infos = [
   {
@@ -21,6 +21,7 @@ export default function RecipeReviewCard() {
       case 0:
         return (
           <ContCard title="QRCodeScan Test">
+            <ContImg/>
             <ContButton
               funName={info.fun}
               text={info.name}

@@ -34,11 +34,11 @@ export default function RecipeReviewCard() {
         React.useEffect(() => {
           setArgs(0, "Title Text");
           setArgs(1, "Body Text");
-          setArgs(2, [
-            ["확인", "basic"],
-            ["취소", "cancel"],
-            ["삭제", "destructive"],
-          ]);
+          setArgs(2, {
+            "basic": "확인",
+            "destructive": "삭제",
+            "cancel": 취소
+          });
           setArgs(3, true);
           setArgs(4, true);
         });
@@ -68,11 +68,11 @@ export default function RecipeReviewCard() {
         React.useEffect(() => {
           setArgs(0, "Title Text");
           setArgs(1, "Body Text");
-          setArgs(2, [
-            ["확인", "basic"],
-            ["취소", "cancel"],
-            ["삭제", "destructive"],
-          ]);
+          setArgs(2, {
+            "basic": "확인",
+            "destructive": "삭제",
+            "cancel": 취소
+          });
           setArgs(3, false);
           setArgs(4, true);
         });
