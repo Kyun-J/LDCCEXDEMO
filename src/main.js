@@ -109,7 +109,7 @@ export default function MAIN() {
 
   return (
     <GlobalThemeProvider>
-      <AppBar position="sticky" color="primary">
+      <AppBar position="sticky" color="secondary">
         <Toolbar>
           <IconButton
             edge="start"
@@ -120,7 +120,7 @@ export default function MAIN() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h5" className={classes.title}>
             {position === 0 ? "Hybrid Demo" : menus[position] + " Demo"}
           </Typography>
           <IconButton

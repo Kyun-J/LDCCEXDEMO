@@ -7,7 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import Divider from '@material-ui/core/Divider';
 import CardMedia from '@material-ui/core/CardMedia';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     textAlign: "center",
     padding: 10,
@@ -43,6 +43,7 @@ const useStyles = makeStyles(() => ({
   },
   titleRoot: {
     padding: 5,
+    color: theme.overrides.MuiButton.contained.backgroundColor
   },
   image: {
     margin: 15,
@@ -119,7 +120,7 @@ export const ContCard = function (props) {
     <Card className={classes.card} {...others}>
       <CardHeader
         classes={{ root: classes.titleRoot }}
-        titleTypographyProps={{ variant: "h6" }}
+        titleTypographyProps={{ variant: "h5" }}
         title={title}
       />
       <Divider style={{margin: 5}} />

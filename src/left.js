@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 0,
   },
   avatar: {
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.overrides.MuiButton.contained.backgroundColor
   },
   action: {
     padding: 0,

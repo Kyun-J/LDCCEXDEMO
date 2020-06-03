@@ -10,12 +10,13 @@ const useStyles = makeStyles((theme) => ({
     padding: 10,
   },
   btn: {
-    width: "90%",
-    margin: 10,
+    width: "85%",
+    margin: 20,
+    padding: 10
   },
 }));
 
-const btnColor = ["default", "primary", "secondary"];
+const btncolor = ["primary", "default"];
 
 export default function RecipeReviewCard() {
   const classes = useStyles();
@@ -27,7 +28,7 @@ export default function RecipeReviewCard() {
           <Button
             key={i}
             variant="contained"
-            color={btnColor[i % 3]}
+            color={i < 3 ? btncolor[0]:btncolor[1]}
             size="large"
             onClick={() => {
               setTimeout(() => {

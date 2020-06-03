@@ -1,21 +1,24 @@
 import React from "react";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { deepOrange } from "@material-ui/core/colors";
 
 const GlobalTheme = createMuiTheme({
   palette: {
-    primary: deepOrange,
+    primary: {
+      main: "#ae9b73",
+      contrastText: "#ffffff"
+    },
     secondary: {
-      main: "#ef5350",
+      main: "#e70012",
     },
   },
   overrides: {
     MuiButton: {
       contained: {
-        backgroundColor: "#fafafa",
+        backgroundColor: "#6a6869",
+        color: "#ffffff",
         '&:hover': {
           '@media (hover: none)': {
-            backgroundColor: "#fafafa",
+            backgroundColor: "#6a6869",
           }
         },
       },
