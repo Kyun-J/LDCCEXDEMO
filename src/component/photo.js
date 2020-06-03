@@ -6,6 +6,10 @@ const infos = [
     name: "QRCode Scan",
     fun: "QRCodeScan",
   },
+  {
+    name: "Select Img from Photos",
+    fun: "PhotoByDeviceRatio",
+  },
 ];
 
 export default function RecipeReviewCard() {
@@ -21,13 +25,30 @@ export default function RecipeReviewCard() {
       case 0:
         return (
           <ContCard title="QRCodeScan Test">
-            <ContImg/>
             <ContButton
               funName={info.fun}
               text={info.name}
               position={position}
               dialog={true}
               args={args}
+            />
+          </ContCard>
+        );
+      case 1:
+        const [res, setRes] = React.useState('');
+        React.useEffect(() => {
+          setArgs(0,1)
+          setArgs(0,true)
+        });
+        return (
+          <ContCard title="Select Img from Photos Test">
+            <ContImg src={res}/>
+            <ContButton
+              funName={info.fun}
+              text={info.name}
+              position={position}
+              args={args}
+              clickAfter={(res) => {setRes(res);}}
             />
           </ContCard>
         );
