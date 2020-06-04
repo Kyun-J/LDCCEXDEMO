@@ -65,12 +65,18 @@ export default function RecipeReviewCard() {
         );
       case 1:
       React.useEffect(() => {
-        setArgs(0, false);
-        setArgs(1, "popup");
-        setArgs(2, 0.8);
+        setArgs(0, "https://naver.com");
+        setArgs(1, 0.8);
       });
       return (
         <ContCard title="PopUp Test">
+          <ContText
+              label="Popup Url"
+              value="https://naver.com"
+              onChange={(event) => {
+                setArgs(0, event.target.value);
+              }}
+            />
           <ContButton
             funName={info.fun}
             text={info.name}
