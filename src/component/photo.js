@@ -1,5 +1,5 @@
 import React from "react";
-import { Root, ContButton, ContText, ContImg, ContCard } from "./elements";
+import { Root, ContButton, ContImg, ContCard } from "./elements";
 
 const infos = [
   {
@@ -9,6 +9,10 @@ const infos = [
   {
     name: "Select Img from Photos",
     fun: "PhotoByDeviceRatio",
+  },
+  {
+    name: "Select multi Imgs from Photos",
+    fun: "MultiPhotoByDeviceRatio",
   },
 ];
 
@@ -37,12 +41,32 @@ export default function RecipeReviewCard() {
       case 1:
         const [res, setRes] = React.useState('');
         React.useEffect(() => {
-          setArgs(0,1)
-          setArgs(0,true)
+          setArgs(0,0.6)
+          setArgs(0,false)
         });
         return (
-          <ContCard title="Select Img from Photos Test">
+          <ContCard title="Select Img Test">
             <ContImg src={res}/>
+            <ContButton
+              funName={info.fun}
+              text={info.name}
+              position={position}
+              args={args}
+              clickAfter={(res) => {setRes(res);}}
+            />
+          </ContCard>
+        );
+      case 2:
+        const [res, setRes] = React.useState([]);
+        React.useEffect(() => {
+          setArgs(0,0.3)
+          setArgs(0,false)
+        });
+        return (
+          <ContCard title="Select multi Imgs Test">
+            {res.map((data) => {
+              <ContImg src={data}/>
+            })}
             <ContButton
               funName={info.fun}
               text={info.name}

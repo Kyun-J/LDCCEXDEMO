@@ -27,23 +27,32 @@ export default function RecipeReviewCard() {
     };
     switch (position) {
       case 0:
+          const obj = {
+            "title" : "Title"
+            ,"subTitle" : null
+            ,"message" : "Message"
+            ,"badge" : 1
+            ,"identifier" : "이아연이식별자임"
+            ,"isRepeat" : false
+            ,"duration" : 5
+          }
         React.useEffect(() => {
-          setArgs(0, "Title Text");
-          setArgs(1, null);
-          setArgs(2, "Body Text");
+          setArgs(0, obj);
         });
         return (
           <ContCard title="Notification Test">
             <ContText
               label="Title Text"
               onChange={(event) => {
-                setArgs(0, event.target.value);
+                obj.title = event.target.value;
+                setArgs(0, obj);
               }}
             />
             <ContText
               label="Body Text"
               onChange={(event) => {
-                setArgs(2, event.target.value);
+                obj.message = event.target.value;
+                setArgs(0, obj);
               }}
             />
             <ContButton
@@ -58,8 +67,7 @@ export default function RecipeReviewCard() {
       React.useEffect(() => {
         setArgs(0, false);
         setArgs(1, "popup");
-        setArgs(2, 0.5);
-        setArgs(3, 0.5);
+        setArgs(2, 0.8);
       });
       return (
         <ContCard title="PopUp Test">
@@ -73,19 +81,21 @@ export default function RecipeReviewCard() {
       );
     case 2:
       React.useEffect(() => {
-        setArgs(0, null);
+        setArgs(0, "01099642514");
         setArgs(1, "SMS Message");
       });
       return (
         <ContCard title="Send SMS Test">
           <ContText
             label="Phone Number"
+            value="01099642514"
             onChange={(event) => {
               setArgs(0, event.target.value);
             }}
           />
           <ContText
             label="SMS Message"
+            value="SMS Message"
             onChange={(event) => {
               setArgs(1, event.target.value);
             }}

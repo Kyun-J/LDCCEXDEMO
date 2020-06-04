@@ -57,10 +57,10 @@ export const ContImg = function (props) {
 
   return (
     <CardMedia
-    className={classes.image}
-    component="img"
-    src={src}
-    {...others}
+      className={classes.image}
+      component="img"
+      src={src}
+      {...others}
     />
   );
 }
