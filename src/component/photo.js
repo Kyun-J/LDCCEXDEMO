@@ -21,6 +21,7 @@ export default function RecipeReviewCard() {
     const position = props.position;
     const info = infos[position];
     const [args, setData] = React.useState([]);
+    const [res, setRes] = React.useState();
     const setArgs = (index, data) => {
       args[index] = data;
       setData(args);
@@ -39,7 +40,6 @@ export default function RecipeReviewCard() {
           </ContCard>
         );
       case 1:
-        const [res, setRes] = React.useState('');
         React.useEffect(() => {
           setArgs(0,0.6)
           setArgs(0,false)
@@ -57,7 +57,6 @@ export default function RecipeReviewCard() {
           </ContCard>
         );
       case 2:
-        const [res, setRes] = React.useState([]);
         React.useEffect(() => {
           setArgs(0,0.3)
           setArgs(0,false)
