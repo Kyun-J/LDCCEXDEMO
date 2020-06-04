@@ -21,7 +21,7 @@ export default function RecipeReviewCard() {
     const position = props.position;
     const info = infos[position];
     const [args, setData] = React.useState([]);
-    const [res, setRes] = React.useState();
+    const [res, setRes] = React.useState([]);
     const setArgs = (index, data) => {
       args[index] = data;
       setData(args);
@@ -46,13 +46,15 @@ export default function RecipeReviewCard() {
         });
         return (
           <ContCard title="Select Img Test">
-            <ContImg src={res}/>
+            {res.map((data) => {
+              <ContImg src={data}/>
+            })}
             <ContButton
               funName={info.fun}
               text={info.name}
               position={position}
               args={args}
-              clickAfter={(res) => {setRes(res);}}
+              clickAfter={(res) => {setRes([res]);}}
             />
           </ContCard>
         );
