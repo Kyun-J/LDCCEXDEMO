@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.overrides.MuiButton.contained.backgroundColor
   },
   image: {
-    margin: 15,
+    marginTop: 15,
     maxHeight: '50%'
   }
 }));
