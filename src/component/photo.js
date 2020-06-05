@@ -41,8 +41,8 @@ export default function RecipeReviewCard() {
         );
       case 1:
         React.useEffect(() => {
-          setArgs(0,0.6)
-          setArgs(0,false)
+          setArgs(0, 0.6);
+          setArgs(0, false);
         });
         return (
           <ContCard title="Select Img Test">
@@ -60,8 +60,8 @@ export default function RecipeReviewCard() {
         );
       case 2:
         React.useEffect(() => {
-          setArgs(0,0.3)
-          setArgs(0,false)
+          setArgs(0, 0.3);
+          setArgs(1, false);
         });
         return (
           <ContCard title="Select multi Imgs Test">
