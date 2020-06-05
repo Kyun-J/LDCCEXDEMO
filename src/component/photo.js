@@ -81,7 +81,7 @@ export default function RecipeReviewCard() {
             />
           </ContCard>
         );
-      case 2:
+      case 3:
         React.useEffect(() => {
           setArgs(0, 0.8);
           setArgs(1, true);
