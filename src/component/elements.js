@@ -77,6 +77,7 @@ export const ContButton = function (props) {
       color="primary"
       onClick={async () => {
         const result = await $flex[funName].apply(this, args);
+        console.log(result);
         if(clickAfter && result != null) {
           clickAfter(result);
         }
