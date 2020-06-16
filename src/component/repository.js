@@ -42,14 +42,14 @@ export default function RecipeReviewCard() {
               label="Data Key"
               defaultValue="Data Key"
               onChange={(event) => {
-                setArgs(0, event.target.value);
+                setArgs(1, event.target.value);
               }}
             />
             <ContText
               label="Data Value"
               defaultValue="Data Value"
               onChange={(event) => {
-                setArgs(1, event.target.value);
+                setArgs(2, event.target.value);
               }}
             />
             <ContButton
@@ -72,7 +72,7 @@ export default function RecipeReviewCard() {
               label="Data Key"
               defaultValue="Data Key"
               onChange={(event) => {
-                setArgs(0, event.target.value);
+                setArgs(1, event.target.value);
               }}
             />
             <ContButton
@@ -95,7 +95,7 @@ export default function RecipeReviewCard() {
               label="Data Key"
               defaultValue="Data Key"
               onChange={(event) => {
-                setArgs(0, event.target.value);
+                setArgs(1, event.target.value);
               }}
             />
             <ContButton
