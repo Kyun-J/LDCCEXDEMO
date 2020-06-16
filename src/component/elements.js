@@ -85,7 +85,7 @@ export const ContButton = function (props) {
           let body = '';
           if(typeof result === 'object') {
             Object.keys(result).forEach(k => {
-              body.concat(k).concat(' : ').concat(result[k]).concat('/n');
+              body = body.concat(k).concat(' : ').concat(result[k]).concat('\n');
             });
           } else {
             body = String(result);

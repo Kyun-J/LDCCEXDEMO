@@ -46,12 +46,14 @@ export default function RecipeReviewCard() {
           <ContCard title="Dioalog Test">
             <ContText
               label="Title Text"
+              defaultValue="Title Text"
               onChange={(event) => {
                 setArgs(0, event.target.value);
               }}
             />
             <ContText
               label="Body Text"
+              defaultValue="Body Text"
               onChange={(event) => {
                 setArgs(1, event.target.value);
               }}
@@ -80,12 +82,14 @@ export default function RecipeReviewCard() {
           <ContCard title="Bottom Dioalog Test">
             <ContText
               label="Title Text"
+              defaultValue="Title Text"
               onChange={(event) => {
                 setArgs(0, event.target.value);
               }}
             />
             <ContText
               label="Body Text"
+              defaultValue="Body Text"
               onChange={(event) => {
                 setArgs(1, event.target.value);
               }}
@@ -107,6 +111,7 @@ export default function RecipeReviewCard() {
           <ContCard title="Short Toast Test">
             <ContText
               label="Short Toast Message"
+              defaultValue="Short Toast Message"
               onChange={(event) => {
                 setArgs(0, event.target.value);
               }}
@@ -128,6 +133,7 @@ export default function RecipeReviewCard() {
           <ContCard title="Long Toast Test">
             <ContText
               label="Long Toast Message"
+              defaultValue="Long Toast Message"
               onChange={(event) => {
                 setArgs(0, event.target.value);
               }}

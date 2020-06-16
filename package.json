@@ -9,11 +9,12 @@
     "build": "cross-env NODE_ENV=production webpack --hide-modules",
     "build:dev": "cross-env NODE_ENV=development webpack --hide-modules",
     "server:dev": "webpack-dev-server",
+    "server:prd": "webpack-dev-server --mode production",
     "watch": "npm run build -- --watch",
     "watch:dev": "cross-env HMR=true npm run build:dev -- --watch"
   },
   "dependencies": {
-    "@material-ui/core": "^4.10.1",
+    "@material-ui/core": "^4.10.2",
     "@material-ui/icons": "^4.9.1",
     "clsx": "^1.1.1",
     "react": "^16.13.1",

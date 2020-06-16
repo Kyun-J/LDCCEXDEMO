@@ -72,7 +72,7 @@ export default function RecipeReviewCard() {
         <ContCard title="PopUp Test">
           <ContText
               label="Popup Url"
-              value="https://naver.com"
+              defaultValue="https://naver.com"
               onChange={(event) => {
                 setArgs(0, event.target.value);
               }}
@@ -94,14 +94,14 @@ export default function RecipeReviewCard() {
         <ContCard title="Send SMS Test">
           <ContText
             label="Phone Number"
-            value="01099642514"
+            defaultValue="01099642514"
             onChange={(event) => {
               setArgs(0, event.target.value);
             }}
           />
           <ContText
             label="SMS Message"
-            value="SMS Message"
+            defaultValue="SMS Message"
             onChange={(event) => {
               setArgs(1, event.target.value);
             }}

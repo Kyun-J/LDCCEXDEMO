@@ -40,14 +40,14 @@ export default function RecipeReviewCard() {
           <ContCard title="Local Data Set Test">
             <ContText
               label="Data Key"
-              value="Data Key"
+              defaultValue="Data Key"
               onChange={(event) => {
                 setArgs(0, event.target.value);
               }}
             />
             <ContText
               label="Data Value"
-              value="Data Value"
+              defaultValue="Data Value"
               onChange={(event) => {
                 setArgs(1, event.target.value);
               }}
@@ -70,7 +70,7 @@ export default function RecipeReviewCard() {
           <ContCard title="Local Data Get Test">
             <ContText
               label="Data Key"
-              value="Data Key"
+              defaultValue="Data Key"
               onChange={(event) => {
                 setArgs(0, event.target.value);
               }}
@@ -93,7 +93,7 @@ export default function RecipeReviewCard() {
           <ContCard title="Local Data Delete Test">
             <ContText
               label="Data Key"
-              value="Data Key"
+              defaultValue="Data Key"
               onChange={(event) => {
                 setArgs(0, event.target.value);
               }}
@@ -115,6 +115,7 @@ export default function RecipeReviewCard() {
           <ContCard title="FileDownload Test">
             <ContText
               label="FileUrl"
+              defaultValue="http://www.africau.edu/images/default/sample.pdf"
               onChange={(event) => {
                 setArgs(0, event.target.value);
               }}
