@@ -83,10 +83,8 @@ export const ContButton = function (props) {
         }
         if(dialog) {
           let body = '';
-          if(typeof result === 'object') {
-            Object.keys(result).forEach(k => {
-              body = body.concat(k).concat(' : ').concat(result[k]).concat('\n');
-            });
+          if(typeof result === 'object' || typeof result === 'array') {
+            body = JSON.stringify(result)
           } else {
             body = String(result);
           }
