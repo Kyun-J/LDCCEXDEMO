@@ -77,7 +77,10 @@ export default function RecipeReviewCard() {
               text={info.name}
               position={position}
               args={args}
-              clickAfter={(res) => {setRes(res.data);}}
+              clickAfter={(res) => {
+                if(typeof res.data === "array") setRes(res.data);
+                else setRes([]);
+              }}
             />
           </ContCard>
         );

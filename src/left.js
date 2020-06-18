@@ -97,6 +97,7 @@ export default function Left() {
           <Typography variant="caption" component="p" className={classes.white}>Kyun-J</Typography>
           <Typography variant="caption" component="p" className={classes.white}>YunByungKwan</Typography>
           <Typography variant="caption" component="p" className={classes.white}>Ayeonii</Typography>
+          <Typography variant="caption" component="p" className={classes.white}>201402407</Typography>
         </CardContent>
       </Collapse>
     </Card>

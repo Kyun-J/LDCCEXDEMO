@@ -43,6 +43,7 @@ export default function RecipeReviewCard() {
           <ContCard title="Notification Test">
             <ContText
               label="Title Text"
+              defaultValue="Title"
               onChange={(event) => {
                 obj.title = event.target.value;
                 setArgs(0, obj);
@@ -50,6 +51,7 @@ export default function RecipeReviewCard() {
             />
             <ContText
               label="Body Text"
+              defaultValue="Message"
               onChange={(event) => {
                 obj.message = event.target.value;
                 setArgs(0, obj);
