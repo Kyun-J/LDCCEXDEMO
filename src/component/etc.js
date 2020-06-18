@@ -32,9 +32,9 @@ export default function RecipeReviewCard() {
             ,"subTitle" : null
             ,"message" : "Message"
             ,"badge" : 1
-            ,"identifier" : "이아연이식별자임"
+            ,"identifier" : "identi"
             ,"isRepeat" : false
-            ,"duration" : 5
+            ,"duration" : 0
           }
         React.useEffect(() => {
           setArgs(0, obj);
@@ -66,7 +66,7 @@ export default function RecipeReviewCard() {
       case 1:
       React.useEffect(() => {
         setArgs(0, "https://naver.com");
-        setArgs(1, 0.8);
+        setArgs(1, 0.9);
       });
       return (
         <ContCard title="PopUp Test">

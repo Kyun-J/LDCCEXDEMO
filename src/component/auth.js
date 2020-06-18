@@ -36,7 +36,7 @@ export default function RecipeReviewCard() {
             />
           </ContCard>
         );
-      case 0:
+      case 1:
         return (
           <ContCard title="Authentication Test">
             <ContButton

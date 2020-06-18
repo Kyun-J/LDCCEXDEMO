@@ -45,7 +45,7 @@ export default function RecipeReviewCard() {
         );
       case 1:
         React.useEffect(() => {
-          setArgs(0, 0.6);
+          setArgs(0, 1);
           setArgs(1, false);
         });
         return (
@@ -56,13 +56,13 @@ export default function RecipeReviewCard() {
               text={info.name}
               position={position}
               args={args}
-              clickAfter={(res) => {setRes([res]);}}
+              clickAfter={(res) => {setRes([res.data]);}}
             />
           </ContCard>
         );
       case 2:
         React.useEffect(() => {
-          setArgs(0, 0.3);
+          setArgs(0, 1);
           setArgs(1, false);
         });
         return (
@@ -77,13 +77,13 @@ export default function RecipeReviewCard() {
               text={info.name}
               position={position}
               args={args}
-              clickAfter={(res) => {setRes(res);}}
+              clickAfter={(res) => {setRes(res.data);}}
             />
           </ContCard>
         );
       case 3:
         React.useEffect(() => {
-          setArgs(0, 0.8);
+          setArgs(0, 1);
           setArgs(1, true);
         });
         return (
@@ -94,7 +94,7 @@ export default function RecipeReviewCard() {
               text={info.name}
               position={position}
               args={args}
-              clickAfter={(res) => {setRes([res]);}}
+              clickAfter={(res) => {setRes([res.data]);}}
             />
           </ContCard>
         );
