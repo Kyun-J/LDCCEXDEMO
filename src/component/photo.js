@@ -78,7 +78,7 @@ export default function RecipeReviewCard() {
               position={position}
               args={args}
               clickAfter={(res) => {
-                if(typeof res.data === "array") setRes(res.data);
+                if(res.data[0] !== undefined) setRes(res.data);
                 else setRes([]);
               }}
             />
