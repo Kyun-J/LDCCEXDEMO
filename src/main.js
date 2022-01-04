@@ -21,6 +21,7 @@ import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import FolderIcon from "@material-ui/icons/Folder";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import TouchApp from "@material-ui/icons/TouchApp";
 
 import splitLoad from './splitLoad'
 
@@ -81,7 +82,7 @@ const Icons = [
   <PhotoLibraryIcon />,
   <VerifiedUserIcon />,
   <FolderIcon />,
-  <FolderIcon />,
+  <TouchApp />,
   <MoreHorizIcon />,
 ];
 

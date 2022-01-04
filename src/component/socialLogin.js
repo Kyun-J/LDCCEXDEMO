@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import * as actions from "../store/actions";
 import { useDispatch } from "react-redux";
-import {ContButton} from "./elements";
+import {ContButton, ContCard} from "./elements";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -42,13 +42,14 @@ export default function SocialLogin() {
         <div className={classes.root}>
 
             { socialLoginItems.map((socialLoginItem) => {
-                return <ContButton
-                    color="default"
-                    size="large"
-                    funName="socialLogin"
-                    text={socialLoginItem.buttonStr}
-                    args={socialLoginItem.type}
-                />
+                return <ContCard title={socialLoginItem.buttonStr}>
+                    <ContButton
+                        size="large"
+                        funName="SocialLogin"
+                        text={socialLoginItem.buttonStr}
+                        args={[socialLoginItem.type]}
+                    />
+                </ContCard>
             })}
 
         </div>
