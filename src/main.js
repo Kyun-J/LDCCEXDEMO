@@ -31,27 +31,22 @@ const Photo = splitLoad(import(/* webpackChunkName: "photo" */ './component/Phot
 const Auth = splitLoad(import(/* webpackChunkName: "auth" */ './component/Auth'));
 const Repository = splitLoad(import(/* webpackChunkName: "repository" */ './component/Repository'));
 const Etc = splitLoad(import(/* webpackChunkName: "etc" */ './component/Etc'));
+const SocialLogin = splitLoad(import(/* webpackChunkName: "etc" */ './component/socialLogin'));
+
 
 function Contents(props) {
   const position = props.position;
-  switch (position) {
-    case 0:
-      return <Home />;
-    case 1:
-      return <Dialog />;
-    case 2:
-      return <Network />;
-    case 3:
-      return <Photo />;
-    case 4:
-      return <Auth />;
-    case 5:
-      return <Repository />;
-    case 6:
-      return <Etc />;
-    default:
-      return <div />;
-  }
+  const homeContentListItems = [
+    <Home/>,
+    <Dialog/>,
+    <Network/>,
+    <Photo/>,
+    <Auth/>,
+    <Repository/>,
+    <SocialLogin/>,
+    <Etc/>
+  ];
+  return homeContentListItems[position];
 }
 
 import Left from "./left";
@@ -76,6 +71,7 @@ const menus = [
   "Photo",
   "Auth",
   "Repository",
+  "Social Login",
   "Etc",
 ];
 const Icons = [
@@ -84,6 +80,7 @@ const Icons = [
   <NetworkCheckIcon />,
   <PhotoLibraryIcon />,
   <VerifiedUserIcon />,
+  <FolderIcon />,
   <FolderIcon />,
   <MoreHorizIcon />,
 ];
@@ -108,52 +105,52 @@ export default function MAIN() {
   };
 
   return (
-    <GlobalThemeProvider>
-      <AppBar position="sticky" color="secondary">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-            onClick={setDrawer(true)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h5" className={classes.title}>
-            {position === 0 ? "Hybrid Demo" : menus[position] + " Demo"}
-          </Typography>
-          <IconButton
-            color="inherit"
-            onClick={() => {
-              setTimeout(() => {
-                dispatch(actions.compoenentPosition(0));
-              }, 300);
+      <GlobalThemeProvider>
+        <AppBar position="sticky" color="secondary">
+          <Toolbar>
+            <IconButton
+                edge="start"
+                className={classes.menuButton}
+                color="inherit"
+                aria-label="menu"
+                onClick={setDrawer(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h5" className={classes.title}>
+              {position === 0 ? "Hybrid Demo" : menus[position] + " Demo"}
+            </Typography>
+            <IconButton
+                color="inherit"
+                onClick={() => {
+                  setTimeout(() => {
+                    dispatch(actions.compoenentPosition(0));
+                  }, 300);
+                }}
+            >
+              <HomeIcon />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+        <Drawer
+            anchor="left"
+            open={state["drawer"]}
+            onClose={setDrawer(false)}
+            classes={{
+              paper: classes.list,
             }}
-          >
-            <HomeIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        anchor="left"
-        open={state["drawer"]}
-        onClose={setDrawer(false)}
-        classes={{
-          paper: classes.list,
-        }}
-      >
-        <Left />
-        <List>
-          {menus.map((text, index) => (
-            <ListItem button key={text} onClick={changeState(index)}>
-              <ListItemIcon>{Icons[index]}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-      <Contents position={position} />
-    </GlobalThemeProvider>
+        >
+          <Left />
+          <List>
+            {menus.map((text, index) => (
+                <ListItem button key={text} onClick={changeState(index)}>
+                  <ListItemIcon>{Icons[index]}</ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItem>
+            ))}
+          </List>
+        </Drawer>
+        <Contents position={position} />
+      </GlobalThemeProvider>
   );
 }

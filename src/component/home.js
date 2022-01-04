@@ -23,7 +23,7 @@ export default function RecipeReviewCard() {
   const dispatch = useDispatch();
   return (
     <div className={classes.root}>
-      {["Dialogs", "Network", "Photo", "Auth", "Repository", "Etc"].map(
+      {["Dialogs", "Network", "Photo", "Auth", "Repository", "Social Login" , "Etc"].map(
         (info, i) => (
           <Button
             key={i}

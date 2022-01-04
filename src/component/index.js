@@ -4,6 +4,7 @@ import network from './network';
 import photo from './photo';
 import auth from './auth';
 import repository from './repository';
+import socialLogin from "./socialLogin";
 import etc from './etc';
 
 export const Home = home;
@@ -12,4 +13,5 @@ export const Network = network;
 export const Photo = photo;
 export const Auth = auth;
 export const Repository = repository;
+export const SocialLogin = socialLogin;
 export const Etc = etc;
